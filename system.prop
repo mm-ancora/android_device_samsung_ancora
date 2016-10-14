@@ -33,15 +33,6 @@ audio.gapless.playback.disable=true
 # Disable offload audio
 audio.offload.disable=1
 
-# Set default USB interface
-persist.sys.usb.config=mtp
-
-# Set read only default composition for USB
-ro.sys.usb.default.config=mtp
-
-# Increase speed for UMS transfer
-ro.vold.umsdirtyratio=20
-
 # Low memory device
 ro.config.low_ram=true
 
@@ -63,5 +54,16 @@ config.disable_atlas=true
 # Enable smooth streaming
 mm.enable.smoothstreaming=true
 
-# USB-OTG
-persist.sys.isUsbOtgEnabled=true
+# Art
+dalvik.vm.dex2oat-swap=false
+
+# Multi-window
+#persist.sys.debug.multi_window=true
+
+# Custom dalvik heap parameters
+dalvik.vm.heapstartsize=5m
+dalvik.vm.heapgrowthlimit=48m
+dalvik.vm.heapsize=128m
+dalvik.vm.heaptargetutilization=0.9
+dalvik.vm.heapminfree=512k
+dalvik.vm.heapmaxfree=2m

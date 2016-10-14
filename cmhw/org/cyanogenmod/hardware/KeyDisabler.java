@@ -16,9 +16,7 @@
 
 package org.cyanogenmod.hardware;
 
-import java.io.File;
-
-import org.cyanogenmod.hardware.util.FileUtils;
+import org.cyanogenmod.internal.util.FileUtils;
 
 /*
  * Disable capacitive keys
@@ -32,33 +30,16 @@ import org.cyanogenmod.hardware.util.FileUtils;
 public class KeyDisabler {
 
     private static String KEYDISABLER_PATH = "/sys/devices/virtual/sec/qt602240_noise_test/keypad_enable";
-    /*
-     * All HAF classes should export this boolean.
-     * Real implementations must, of course, return true
-     */
 
     public static boolean isSupported() {
-        File f = new File(KEYDISABLER_PATH);
-        return f.exists();
+        return FileUtils.isFileWritable(KEYDISABLER_PATH);
     }
-
-    /*
-     * Are the keys currently blocked?
-     */
 
     public static boolean isActive() {
-        int i;
-        i = Integer.parseInt(FileUtils.readOneLine(KEYDISABLER_PATH));
-
-        return i > 0 ? false : true;
+        return FileUtils.readOneLine(KEYDISABLER_PATH).equals("0");
     }
-
-    /*
-     * Disable capacitive keys
-     */
 
     public static boolean setActive(boolean state) {
-        return FileUtils.writeLine(KEYDISABLER_PATH, String.valueOf(state ? 0 : 1));
+        return FileUtils.writeLine(KEYDISABLER_PATH, (state ? "0" : "1"));
     }
-
 }
