@@ -25,8 +25,9 @@
 # against the traditional rules of inheritance).
 
 # inherit from the proprietary version
+--include vendor/samsung/ancora/BoardConfigVendor.mk
 
-TARGET_SPECIFIC_HEADER_PATH += device/samsung/ancora/include
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/ancora/include
 
 # Platform
 TARGET_BOARD_PLATFORM := msm7x30
@@ -41,6 +42,9 @@ TARGET_CPU_VARIANT := scorpion
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := false
+
+# Use dlmalloc instead of jemalloc for mallocs on low-ram targets
+MALLOC_IMPL := dlmalloc
 
 # Enable dex-preoptimization to speed up first boot sequence
 WITH_DEXPREOPT := true
@@ -112,8 +116,11 @@ BOARD_USES_QCOM_HARDWARE := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Camera
+BOARD_USES_LEGACY_OVERLAY := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+BOARD_NEEDS_MEMORYHEAPPMEM := true
 COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
+COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_LEGACY
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Light HAL

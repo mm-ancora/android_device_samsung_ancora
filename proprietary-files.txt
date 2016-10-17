@@ -23,7 +23,7 @@
 /lib/egl/libq3dtools_adreno.so
 
 /lib/hw/lights.msm7x30.so
-/lib/hw/sensors.ancora.so
+/lib/hw/sensors.GT-I8150.so
 
 /lib/libActionShot.so
 /lib/libakm.so

@@ -230,9 +230,18 @@ public:
     virtual void takeLiveSnapshot() = 0;
 };
 
-/* The functions need to be provided by the camera HAL. */
+/** factory function to instantiate a camera hardware object */
+//extern "C" sp<CameraHardwareInterface> openCameraHardware();
+
+/**
+ * The functions need to be provided by the camera HAL.
+ *
+ * If getNumberOfCameras() returns N, the valid cameraId for getCameraInfo()
+ * and openCameraHardware() is 0 to N-1.
+ */
 extern "C" int SEC_getNumberOfCameras();
 extern "C" void SEC_getCameraInfo(int cameraId, struct CameraInfo* cameraInfo);
+/* HAL should return NULL if it fails to open camera hardware. */
 extern "C" sp<CameraHardwareInterface> SEC_openCameraHardware(int cameraId);
 
 };  // namespace android

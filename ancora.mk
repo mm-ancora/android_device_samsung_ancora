@@ -126,7 +126,6 @@ PRODUCT_PACKAGES += \
 
 # Libshims
 PRODUCT_PACKAGES += \
-    libshim_native \
     libshim_ril
 
 # IPv6 tethering
@@ -145,6 +144,10 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# ART
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat-flags=--no-watch-dog
 
 # For userdebug builds
 ADDITIONAL_DEFAULT_PROPERTIES += \

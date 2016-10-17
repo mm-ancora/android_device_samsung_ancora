@@ -11,7 +11,7 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
-    export LD_SHIM_LIBS "/system/lib/hw/camera.msm7x30.so|libshim_native.so:/system/lib/libril.so|libshim_ril.so:/system/lib/hw/sensors.ancora.so|libshim_native.so"
+    export LD_SHIM_LIBS "/system/lib/libril.so|libshim_ril.so"
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
