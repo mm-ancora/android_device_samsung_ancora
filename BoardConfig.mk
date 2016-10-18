@@ -25,7 +25,7 @@
 # against the traditional rules of inheritance).
 
 # inherit from the proprietary version
---include vendor/samsung/ancora/BoardConfigVendor.mk
+-include vendor/samsung/ancora/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/ancora/include
 
@@ -42,9 +42,6 @@ TARGET_CPU_VARIANT := scorpion
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := false
-
-# Use dlmalloc instead of jemalloc for mallocs on low-ram targets
-MALLOC_IMPL := dlmalloc
 
 # Enable dex-preoptimization to speed up first boot sequence
 WITH_DEXPREOPT := true
